@@ -1,0 +1,16 @@
+# Infisical local bootstrap settings
+scripts/infisical-project.env
+
+# Local MCP configs may contain user-specific paths or accidental secrets.
+.cursor/mcp.json
+.claude/mcp.json
+.mcp.local.json
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Local smoke-test outputs
+scripts/mcp-smoke-report*.json
+

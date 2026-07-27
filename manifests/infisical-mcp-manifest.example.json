@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "notes": [
+    "This manifest contains secret names only, never secret values.",
+    "Copy to infisical-mcp-manifest.json and customize per repository."
+  ],
+  "servers": {
+    "github-project": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "notion-project": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_KEY": "${NOTION_API_KEY}"
+      }
+    },
+    "crm-project": {
+      "command": "node",
+      "args": ["/absolute/path/to/ghl-mcp/dist/server.js"],
+      "env": {
+        "GHL_API_KEY": "${GHL_API_KEY}",
+        "GHL_LOCATION_ID": "${GHL_LOCATION_ID}",
+        "GHL_BASE_URL": "https://services.leadconnectorhq.com",
+        "NODE_ENV": "production"
+      }
+    },
+    "vercel-project": {
+      "command": "npx",
+      "args": ["-y", "vercel-mcp-server"],
+      "env": {
+        "VERCEL_TOKEN": "${VERCEL_TOKEN}"
+      }
+    }
+  }
+}

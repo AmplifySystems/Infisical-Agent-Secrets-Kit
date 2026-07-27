@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "Infisical Docs": {
+      "url": "https://infisical.com/docs/mcp"
+    },
+    "github-project": {
+      "command": "/absolute/path/to/repo/scripts/infisical-mcp-launch.sh",
+      "args": ["github-project"],
+      "env": {}
+    },
+    "crm-project": {
+      "command": "/absolute/path/to/repo/scripts/infisical-mcp-launch.sh",
+      "args": ["crm-project"],
+      "env": {}
+    }
+  }
+}

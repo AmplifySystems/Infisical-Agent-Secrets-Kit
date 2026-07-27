@@ -1,0 +1,14 @@
+# Example only. Put real Codex MCP config in your local Codex config, not in git.
+# Keep raw tokens out of this file.
+
+[mcp_servers.infisical_docs]
+type = "http"
+url = "https://infisical.com/docs/mcp"
+
+[mcp_servers.github_project]
+command = "/absolute/path/to/repo/scripts/infisical-mcp-launch.sh"
+args = ["github-project"]
+
+[mcp_servers.crm_project]
+command = "/absolute/path/to/repo/scripts/infisical-mcp-launch.sh"
+args = ["crm-project"]
