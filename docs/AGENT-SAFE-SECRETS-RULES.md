@@ -103,6 +103,16 @@ MCP config must not contain:
 6. Remove the leaked value from local files and git history as needed.
 7. Restart any MCP/client process that used the old value.
 
+## Going Further: Credential Brokering (2026-08-05)
+
+Everything above assumes the agent's process env holds the real secret value, and the rule is
+"never print it." Infisical's **Agent Proxy** removes that assumption entirely — the agent's
+own environment only ever holds a placeholder, and the real value is injected on the outbound
+network leg, after it leaves the agent's process. Free for static secrets on any Infisical plan.
+Use it for high-blast-radius credentials or less-supervised agents; see
+[`AGENT-PROXY-CREDENTIAL-BROKERING.md`](./AGENT-PROXY-CREDENTIAL-BROKERING.md) for setup. This is
+additive to everything above, not a replacement — keep following these rules either way.
+
 ## Agent Instruction Snippet
 
 Paste this into `AGENTS.md` or `CLAUDE.md`:

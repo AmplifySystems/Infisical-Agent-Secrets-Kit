@@ -45,6 +45,7 @@ For actual secret-backed tools, use:
 | `docs/INFISICAL-CLOUD-SETUP.md` | Exact setup flow for Cloud, projects, environments, machine identities, and adding secrets |
 | `docs/MCP-SETUP-CLAUDE-CODE-CODEX-CURSOR.md` | How to connect Infisical Docs MCP and secret-backed MCP wrappers |
 | `docs/AGENT-SAFE-SECRETS-RULES.md` | Rules every AI agent should follow before running commands |
+| `docs/AGENT-PROXY-CREDENTIAL-BROKERING.md` | **New (2026-08-05):** optional hardening layer — the agent process never holds the real secret value at all, even in its own environment |
 | `docs/PARTNER-REPO-INSTALL-CHECKLIST.md` | Copy checklist for adding this kit to a client or team repository |
 | `docs/ROTATION-INCIDENT-RESPONSE.md` | What to do if a secret appears in logs, chat, or git |
 | `scripts/with-infisical.sh` | Runs any command with Infisical secrets injected |
@@ -76,6 +77,11 @@ For actual secret-backed tools, use:
 7. Add real service credentials into Infisical, not into MCP configs.
 8. Configure MCP clients to launch tools through `scripts/infisical-mcp-launch.sh`.
 9. Run `scripts/verify-infisical-safe.sh GITHUB_PERSONAL_ACCESS_TOKEN` to verify presence without printing the value.
+10. Optional, for higher-stakes credentials or less-supervised agents: layer [`docs/AGENT-PROXY-CREDENTIAL-BROKERING.md`](docs/AGENT-PROXY-CREDENTIAL-BROKERING.md) on top — the agent process never holds the real value in its own environment at all, even under prompt injection.
+
+## What's New
+
+- **2026-08-05** — Added Agent Proxy credential brokering guidance ([`docs/AGENT-PROXY-CREDENTIAL-BROKERING.md`](docs/AGENT-PROXY-CREDENTIAL-BROKERING.md)). Infisical shipped this feature 2026-07-30 ([launch post](https://infisical.com/blog/agent-proxy)): agents get a placeholder credential and never see the real value, even in their own process environment — a step up from this kit's existing `infisical run`-based scripts, which do inject real values into the launched process. Free on Infisical's $0 tier for static secrets. Worth knowing if you're evaluating older Infisical docs: an earlier, separate product called "Agent Sentinel" (AI MCP) was removed by Infisical on 2026-08-04 and its docs now redirect to Agent Proxy — if you see "Agent Sentinel" referenced anywhere else, treat Agent Proxy as its replacement.
 
 ## Source References
 
@@ -88,6 +94,13 @@ Primary Infisical docs checked on 2026-07-21:
 - `infisical run`: https://infisical.com/docs/cli/commands/run
 - Infisical Docs MCP: https://infisical.com/docs/ai/model-context-protocol
 - Claude Code MCP scopes: https://code.claude.com/docs/en/mcp
+
+Re-checked and extended on 2026-08-05 (see [`docs/AGENT-PROXY-CREDENTIAL-BROKERING.md`](docs/AGENT-PROXY-CREDENTIAL-BROKERING.md) for full sourcing):
+
+- Agent Proxy overview: https://infisical.com/docs/documentation/platform/agent-proxy/overview
+- Agent Proxy launch blog: https://infisical.com/blog/agent-proxy
+- Credential Brokering for AI Agents, Explained: https://infisical.com/blog/credential-brokering-for-ai-agents
+- Infisical Pricing (free vs. paid tiers): https://infisical.com/pricing
 
 ## Built by Amplify Systems
 
